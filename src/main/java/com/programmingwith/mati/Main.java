@@ -1,15 +1,15 @@
 package com.programmingwith.mati;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.math.BigDecimal;
 
+@SpringBootApplication
 public class Main {
 
   public static void main(String[] args) throws ClassNotFoundException {
     Class.forName("com.mysql.cj.jdbc.Driver");
-
-    var bankAccountService = new BankAccountService();
-    bankAccountService.deposit(1, BigDecimal.TEN);
-    var bankAccount = bankAccountService.findById(1);
-    System.out.println("The balance of account '%d' is: %s".formatted(bankAccount.id(), bankAccount.balance()));
+    SpringApplication.run(Main.class, args);
   }
 }

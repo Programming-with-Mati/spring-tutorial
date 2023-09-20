@@ -1,10 +1,19 @@
 package com.programmingwith.mati;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 
+@Service
 public class BankAccountService {
 
-  private final BankAccountRepository bankAccountRepository = new JdbcBankAccountRepository();
+  private final BankAccountRepository bankAccountRepository;
+
+  @Autowired
+  public BankAccountService(BankAccountRepository bankAccountRepository) {
+    this.bankAccountRepository = bankAccountRepository;
+  }
 
   public BankAccount createBankAccount(int id) {
     return bankAccountRepository.save(new BankAccount(id, BigDecimal.ZERO));

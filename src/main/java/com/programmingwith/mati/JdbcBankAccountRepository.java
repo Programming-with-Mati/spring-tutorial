@@ -1,7 +1,10 @@
 package com.programmingwith.mati;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.*;
 
+@Component
 public class JdbcBankAccountRepository implements BankAccountRepository {
   @Override
   public BankAccount findById(int id) {
