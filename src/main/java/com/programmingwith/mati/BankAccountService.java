@@ -4,7 +4,11 @@ import java.math.BigDecimal;
 
 public class BankAccountService {
 
-  private final BankAccountRepository bankAccountRepository = new JdbcBankAccountRepository();
+  private final BankAccountRepository bankAccountRepository;
+
+  public BankAccountService(BankAccountRepository bankAccountRepository) {
+    this.bankAccountRepository = bankAccountRepository;
+  }
 
   public BankAccount createBankAccount(int id) {
     return bankAccountRepository.save(new BankAccount(id, BigDecimal.ZERO));
